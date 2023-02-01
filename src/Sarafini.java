@@ -7,12 +7,12 @@ public class Sarafini {
     String w1;
     String w2;
     Queue<Stack> seeni = new LinkedList<Stack>();
-    List<String> words;
+    List<String> alpha;
 
-    public Sarafini(String word1, String word2, List<String> w){
+    public Sarafini(String word1, String word2, List<String> a){
         w1 = word1;
         w2 = word2;
-        words = w;
+        alpha = a;
     }
 
     public String ladder(){
@@ -22,12 +22,12 @@ public class Sarafini {
 
         while(!seeni.isEmpty()){
             seeni.poll();
-            for(int i = 0; i < words.size(); i++)
+            for(int i = 0; i < alpha.size(); i++)
             {
-                int count =0;
-                for(int x =0; x< words.get(i).length(); x++){
+             for(int j = 0; j < w1.length(); j++){
+                 String temp = w1.substring(0,j) + alpha.get(i) + w1.substring(j, w1.length());
+             }
 
-                }
             }
         }
 

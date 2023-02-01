@@ -27,7 +27,7 @@ public class Main {
      */
     public static final int SEED = 42;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void Main(String[] args) throws FileNotFoundException {
         // read names into a Set to eliminate duplicates
         File inputFile = new File(INPUT_FILENAME);
         if (!inputFile.canRead()) {
