@@ -3,12 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 
-/**
- * Class AssassinMain is the main client program for assassin game management.
- * It reads names from a file names.txt, shuffles them, and uses them to start
- * the game. The user is asked for the name of the next victim until the game is
- * over.
- */
 public class Main {
 
     /**
@@ -28,6 +22,7 @@ public class Main {
     public static final int SEED = 42;
 
     public static void Main(String[] args) throws FileNotFoundException {
+        System.out.println("chicken");
         // read names into a Set to eliminate duplicates
         File inputFile = new File(INPUT_FILENAME);
         if (!inputFile.canRead()) {
@@ -49,16 +44,32 @@ public class Main {
         Random rand = (RANDOM) ? new Random() : new Random(SEED);
         Collections.shuffle(nameList, rand);
 
-        AssassinManager manager = new AssassinManager(nameList);
+
+        List<String> alpha = new ArrayList<String>{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}();
+
+
+        List<String> dictionary = new ArrayList<String>();
+        while (input.hasNextLine()) {
+            String name = input.nextLine().trim().intern();
+            if (name.length() > 0) {
+                dictionary.add(name);
+            }
+        }
+
+        Sarafini sara = new Sarafini(nameList);
+        System.out.print("Dictionary file name? ");
+        String name = input.nextLine().trim();
+
+
 
         // prompt the user for victims until the game is over
         Scanner console = new Scanner(System.in);
         while (!manager.isGameOver()) {
             oneKill(console, manager);
-        }
+        }*/
 
         // report who won
-        System.out.println("Game was won by " + manager.winner());
+       /*System.out.println("Game was won by " + manager.winner());
         System.out.println("Final graveyard is as follows:");
         System.out.println(manager.graveyard());
     }
@@ -67,7 +78,7 @@ public class Main {
      * Handles the details of recording one victim. Shows the current kill ring
      * and graveyard to the user, prompts for a name and records the kill if the
      * name is legal.
-     */
+
     public static void oneKill(Scanner console, AssassinManager manager) {
         // print both linked lists
         System.out.println("Current kill ring:");
@@ -89,5 +100,8 @@ public class Main {
             manager.kill(name);
         }
         System.out.println();
+    }
+
+        */
     }
 }
