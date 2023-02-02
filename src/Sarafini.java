@@ -15,24 +15,25 @@ public class Sarafini {
         alpha = a;
     }
 
-    public String ladder(){
+    public String ladder() {
 
         seeni.offer(new Stack<String>());
         seeni.peek().push(w1);
 
-        while(!seeni.isEmpty()){
+        while (!seeni.isEmpty()) {
             seeni.poll();
-            for(int i = 0; i < alpha.size(); i++)
-            {
-             for(int j = 0; j < w1.length(); j++){
-                 String temp = w1.substring(0,j) + alpha.get(i) + w1.substring(j, w1.length());
-             }
+            for (int j = 0; j < w1.length(); j++) {
+                {
+                    for (int i = 0; i < alpha.size(); i++) {
+                        String temp = w1.substring(0, j) + alpha.get(i) + w1.substring(j, w1.length());
+                    }
 
+                }
             }
+
         }
+        return "lol";
+
 
     }
-
-
-
 }
