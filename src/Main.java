@@ -8,7 +8,7 @@ public class Main {
     /**
      * input file name from which to read data
      */
-    public static final String INPUT_FILENAME = "names.txt";
+    public static String INPUT_FILENAME = " ";
 
     /**
      * true for different results every run; false for predictable results
@@ -24,7 +24,7 @@ public class Main {
     public static void Main(String[] args) throws FileNotFoundException {
         System.out.println("chicken");
         // read names into a Set to eliminate duplicates
-        File inputFile = new File(INPUT_FILENAME);
+        //File inputFile = new File(INPUT_FILENAME);
         if (!inputFile.canRead()) {
             System.out.println("Required input file not found; exiting.\n" + inputFile.getAbsolutePath());
             System.exit(1);
@@ -45,8 +45,7 @@ public class Main {
         Collections.shuffle(nameList, rand);
 
 
-        List<String> alpha = new ArrayList<String>{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}();
-
+        List<String> alpha = new ArrayList<String>{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
 
         List<String> dictionary = new ArrayList<String>();
         while (input.hasNextLine()) {
@@ -56,9 +55,14 @@ public class Main {
             }
         }
 
-        Sarafini sara = new Sarafini(nameList);
+        System.out.print("Welcome to Word Ladder." + "\n" + "Please give me two English words, and I will change the" + "\n" + "first into the second by changing one letter at a time." + "\n");
         System.out.print("Dictionary file name? ");
-        String name = input.nextLine().trim();
+        INPUT_FILENAME = input.nextLine().trim();
+
+        File inputFile = new File(INPUT_FILENAME);
+
+        Sarafini sara = new Sarafini();
+
 
 
 
