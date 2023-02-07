@@ -57,13 +57,14 @@ public class Main {
         {
             if(word1.length()<1)
             {
-                System.out.println("Have a good day. \n" + inputFile.getAbsolutePath());
+                System.out.println("Have a good day. \n");
                 System.exit(0);
             }
+            System.out.println("Required word not found; exiting.\n");
+            System.out.println("Word #1 (or Enter to quit): ");
             word1 = console.nextLine().trim();
         }
-        System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
-        System.exit(1);
+
 
         System.out.println("Word #2 (or Enter to quit): ");
         console = new Scanner(System.in);
