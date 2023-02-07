@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         System.out.print("Welcome to Word Ladder." + "\n" + "Please give me two English words, and I will change the" + "\n" + "first into the second by changing one letter at a time." + "\n");
-        System.out.print("Dictionary file name? ");
+        System.out.println("Dictionary file name? ");
         /*
         //Scanner input = new Scanner(System.in);
         Scanner input = new Scanner(System.in);
@@ -53,11 +53,17 @@ public class Main {
         System.out.println("Word #1 (or Enter to quit): ");
         Scanner console = new Scanner(System.in);
         String word1 = console.nextLine().trim();
-        if(!dictionary.contains(word1))
+        while(!dictionary.contains(word1))
         {
-            System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
-            System.exit(1);
+            if(word1.length()<1)
+            {
+                System.out.println("Have a good day. \n" + inputFile.getAbsolutePath());
+                System.exit(0);
+            }
+            word1 = console.nextLine().trim();
         }
+        System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
+        System.exit(1);
 
         System.out.println("Word #2 (or Enter to quit): ");
         console = new Scanner(System.in);
@@ -68,7 +74,6 @@ public class Main {
             System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
             System.exit(1);
         }
-
         System.out.println("A ladder from " + word1 + " back to " + word2);
         Sarafini sini = new Sarafini(word1, word2, alpha, dictionary);
         System.out.println(sini.ladder());
