@@ -38,15 +38,15 @@ public class Sarafini {
                         System.out.println(temp);
                         if(dict.contains(temp))
                         {
+                            System.out.println("chicken");
                             for(Stack<String> s : seeni)
                             {
-                                System.out.println("chicken");
                                 for(String teeni : s)
                                 {
                                     if(teeni.equals(temp))
                                     {
                                         sus = true;
-                                        System.out.println(sus);
+
                                     }
                                 }
                             }
@@ -60,7 +60,7 @@ public class Sarafini {
                                     return answa;
                                 }
                                 else{
-                                    Stack<String> teepi = seeni.peek();
+                                    Stack<String> teepi = tempStack;
                                     //for(String s:teepi)
                                     //System.out.println(s);
                                     teepi.push(temp);
