@@ -7,12 +7,12 @@ public class Sarafini {
     String w1;
     String w2;
     Queue<Stack> seeni = new LinkedList<Stack>();
-    List<String> alpha;
+    String alpha;
     List<String> dict;
 
 
 
-    public Sarafini(String word1, String word2, List<String> a, List<String> d){
+    public Sarafini(String word1, String word2, String a, List<String> d){
         w1 = word1;
         w2 = word2;
         alpha = a;
@@ -29,8 +29,8 @@ public class Sarafini {
         while (!seeni.isEmpty()) {
             for (int j = 0; j < w1.length(); j++) {
                 {
-                    for (int i = 0; i < alpha.size(); i++) {
-                        String temp = w1.substring(0, j) + alpha.get(i) + w1.substring(j+1);
+                    for (int i = 0; i < alpha.length(); i++) {
+                        String temp = w1.substring(0, j) + alpha.substring(i, i+1) + w1.substring(j+1);
                         if(dict.contains(temp))
                         {
                             for(Stack<String> s : seeni)

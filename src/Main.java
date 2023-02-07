@@ -8,7 +8,7 @@ public class Main {
     /**
      * input file name from which to read data
      */
-    public static String INPUT_FILENAME = " ";
+    public static String INPUT_FILENAME = "tiny.txt";
 
     /**
      * true for different results every run; false for predictable results
@@ -21,15 +21,59 @@ public class Main {
      */
     public static final int SEED = 42;
 
-    public static void Main(String[] args) throws FileNotFoundException {
-        System.out.println("chicken");
-        // read names into a Set to eliminate duplicates
-        //File inputFile = new File(INPUT_FILENAME);
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.print("Welcome to Word Ladder." + "\n" + "Please give me two English words, and I will change the" + "\n" + "first into the second by changing one letter at a time." + "\n");
+        System.out.print("Dictionary file name? ");
+        /*
+        //Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
+        File inputFile = new File(input.nextLine());
+
+        if (!inputFile.canRead()) {
+            System.out.println("Required input file not found; exiting.\n" + inputFile.getAbsolutePath());
+            System.exit(1);
+        }*/
+        File inputFile = new File(INPUT_FILENAME);
         if (!inputFile.canRead()) {
             System.out.println("Required input file not found; exiting.\n" + inputFile.getAbsolutePath());
             System.exit(1);
         }
         Scanner input = new Scanner(inputFile);
+
+        String alpha = ("abcdefghijklmnopqrstuvwxyz");
+
+        List<String> dictionary = new ArrayList<String>();
+        while (input.hasNextLine()) {
+            String name = input.nextLine().trim().intern();
+            if (name.length() > 0) {
+                dictionary.add(name);
+            }
+        }
+
+        System.out.println("Word #1 (or Enter to quit): ");
+        String word1 = input.nextLine();
+        if(!dictionary.contains(word1))
+        {
+            System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
+            System.exit(1);
+        }
+
+        System.out.println("Word #2 (or Enter to quit): ");
+        String word2 = input.nextLine();
+        if(!dictionary.contains(word2))
+        {
+            System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
+            System.exit(1);
+        }
+
+        System.out.println("A ladder from " + word1 + " back to " + word2);
+        Sarafini sini = new Sarafini(word1, word2, alpha, dictionary);
+        System.out.println(sini.ladder());
+
+        /*
+        // read names into a Set to eliminate duplicates
+        //File inputFile = new File(INPUT_FILENAME);
+
 
         Set<String> names = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
         while (input.hasNextLine()) {
@@ -43,34 +87,19 @@ public class Main {
         ArrayList<String> nameList = new ArrayList<>(names);
         Random rand = (RANDOM) ? new Random() : new Random(SEED);
         Collections.shuffle(nameList, rand);
-
-
-        List<String> alpha = new ArrayList<String>{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
-
-        List<String> dictionary = new ArrayList<String>();
-        while (input.hasNextLine()) {
-            String name = input.nextLine().trim().intern();
-            if (name.length() > 0) {
-                dictionary.add(name);
-            }
-        }
-
-        System.out.print("Welcome to Word Ladder." + "\n" + "Please give me two English words, and I will change the" + "\n" + "first into the second by changing one letter at a time." + "\n");
-        System.out.print("Dictionary file name? ");
-        INPUT_FILENAME = input.nextLine().trim();
-
-        File inputFile = new File(INPUT_FILENAME);
-
-        Sarafini sara = new Sarafini();
+*/
 
 
 
 
+
+
+/*
         // prompt the user for victims until the game is over
         Scanner console = new Scanner(System.in);
-        while (!manager.isGameOver()) {
-            oneKill(console, manager);
-        }*/
+        while (!sarafini.isGameOver()) {
+            sarafini(console, manager);
+        }
 
         // report who won
        /*System.out.println("Game was won by " + manager.winner());
