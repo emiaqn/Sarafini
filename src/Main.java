@@ -38,7 +38,7 @@ public class Main {
             System.out.println("Required input file not found; exiting.\n" + inputFile.getAbsolutePath());
             System.exit(1);
         }
-        Scanner input = new Scanner(INPUT_FILENAME);
+        Scanner input = new Scanner(inputFile);
 
         String alpha = ("abcdefghijklmnopqrstuvwxyz");
 
@@ -50,6 +50,10 @@ public class Main {
             }
         }
 
+        for(String s: dictionary)
+        {
+            System.out.println(s);
+        }
         System.out.println("Word #1 (or Enter to quit): ");
         Scanner console = new Scanner(System.in);
         String word1 = console.nextLine().trim();
