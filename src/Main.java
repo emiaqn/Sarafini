@@ -44,20 +44,16 @@ public class Main {
 
         List<String> dictionary = new ArrayList<String>();
         while (input.hasNextLine()) {
-            String name = input.nextLine().trim().intern();
+            String name = input.next().trim().intern();
             if (name.length() > 0) {
                 dictionary.add(name);
             }
         }
 
-        for(String s: dictionary)
-        {
-            System.out.println(s);
-        }
         System.out.println("Word #1 (or Enter to quit): ");
         Scanner console = new Scanner(System.in);
         String word1 = console.nextLine().trim();
-        while(!dictionary.contains(word1))
+        while(!(dictionary.contains(word1)))
         {
             if(word1.length()<1)
             {
@@ -73,13 +69,18 @@ public class Main {
         System.out.println("Word #2 (or Enter to quit): ");
         console = new Scanner(System.in);
         String word2 = console.nextLine().trim();
-
-        if(!dictionary.contains(word2))
+        while(!(dictionary.contains(word2)))
         {
-            System.out.println("Required word not found; exiting.\n" + inputFile.getAbsolutePath());
-            System.exit(1);
+            if(word2.length()<1)
+            {
+                System.out.println("Have a good day. \n");
+                System.exit(0);
+            }
+            System.out.println("Required word not found; exiting.\n");
+            System.out.println("Word #2 (or Enter to quit): ");
+            word2 = console.nextLine().trim();
         }
-        System.out.println("A ladder from " + word1 + " back to " + word2);
+        System.out.println("A ladder from " + word1 + " back to " + word2 + ":");
         Sarafini sini = new Sarafini(word1, word2, alpha, dictionary);
         System.out.println(sini.ladder());
 
