@@ -35,10 +35,9 @@ public class Sarafini {
                 {
                     for (int i = 0; i < alpha.length(); i++) {
                         String temp = tempWord.substring(0, j) + alpha.substring(i, i+1) + tempWord.substring(j+1);
-                        System.out.println(temp);
+                        //System.out.println(temp);
                         if(dict.contains(temp))
                         {
-                            System.out.println("chicken");
                             for(Stack<String> s : seeni)
                             {
                                 for(String teeni : s)
@@ -54,6 +53,10 @@ public class Sarafini {
                             if(sus == false) {
 
                                 if (temp.equals(w2)) {
+                                    Stack<String> teepi = tempStack;
+                                    //for(String s:teepi)
+                                    //System.out.println(s);
+                                    teepi.push(temp);
                                     for (Object lol : seeni.peek()) {
                                         answa += lol + " ";
                                     }

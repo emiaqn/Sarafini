@@ -8,7 +8,7 @@ public class Main {
     /**
      * input file name from which to read data
      */
-    public static String INPUT_FILENAME = "tiny.txt";
+    public static String INPUT_FILENAME = "dictionary.txt";
 
     /**
      * true for different results every run; false for predictable results
