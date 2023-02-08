@@ -42,7 +42,9 @@ public class Main {
 
         String alpha = ("abcdefghijklmnopqrstuvwxyz");
 
-        List<String> dictionary = new ArrayList<String>();
+
+        Set<String> dictionary = new HashSet<String>();
+
         while (input.hasNextLine()) {
             String name = input.next().trim().intern();
             if (name.length() > 0) {

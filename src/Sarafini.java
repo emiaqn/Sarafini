@@ -8,11 +8,11 @@ public class Sarafini {
     String w2;
     Queue<Stack> seeni = new LinkedList<Stack>();
     String alpha;
-    List<String> dict;
+    Set<String> dict;
 
 
 
-    public Sarafini(String word1, String word2, String a, List<String> d){
+    public Sarafini(String word1, String word2, String a, Set<String> d){
         w1 = word1;
         w2 = word2;
         alpha = a;
