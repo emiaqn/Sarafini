@@ -30,7 +30,10 @@ public class Sarafini {
         seeni.peek().push(w1);
 
         while (!seeni.isEmpty()) {
-            Stack tempStack = seeni.poll();
+            Stack tempStack = new Stack<String>();
+            for(String s : seeni){
+                tempStack.push()
+            }
             String tempWord = (String) tempStack.pop();
             for (int j = 0; j < tempWord.length(); j++) {
                 {
