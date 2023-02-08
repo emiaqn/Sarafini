@@ -7,6 +7,8 @@ public class Sarafini {
     String w1;
     String w2;
     Queue<Stack> seeni = new LinkedList<Stack>();
+
+
     String alpha;
     Set<String> dict;
 
@@ -30,7 +32,6 @@ public class Sarafini {
         while (!seeni.isEmpty()) {
             Stack tempStack = seeni.poll();
             String tempWord = (String) tempStack.pop();
-
             for (int j = 0; j < tempWord.length(); j++) {
                 {
                     for (int i = 0; i < alpha.length(); i++) {
