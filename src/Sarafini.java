@@ -1,89 +1,75 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Sarafini {
 
-    String w1;
-    String w2;
-    Queue<Stack> seeni = new LinkedList<Stack>();
-
-
+    String word1;
+    String word2;
     String alpha;
-    Set<String> dict;
+    HashSet<String> dict;
 
-
-
-    public Sarafini(String word1, String word2, String a, Set<String> d){
-        w1 = word1;
-        w2 = word2;
+    public Sarafini(String w1, String w2, String a, HashSet<String> d){
+        word1 = w1;
+        word2 = w2;
         alpha = a;
         dict = d;
     }
 
-    public String ladder() {
-
-        boolean sus = false;
-        String answa = "";
-
-        seeni.offer(new Stack<String>());
-        seeni.peek().push(w1);
-
-        while (!seeni.isEmpty()) {
-            Stack tempStack = new Stack<String>();
-            for(String s : seeni){
-                tempStack.push()
+    public Stack<String> buildLadder() {
+        Queue<Stack<String>> q = new LinkedList<Stack<String>>();
+        Stack<String> tempStack = new Stack<String>();
+        tempStack.push(word1);
+        q.add(tempStack);
+        while(!q.isEmpty()){
+            Stack<String> stacks = new Stack<String>();
+            for(String s: q.poll()){
+                stacks.push(s);
             }
-            String tempWord = (String) tempStack.pop();
-            for (int j = 0; j < tempWord.length(); j++) {
-                {
-                    for (int i = 0; i < alpha.length(); i++) {
-                        String temp = tempWord.substring(0, j) + alpha.substring(i, i+1) + tempWord.substring(j+1);
-                        //System.out.println(temp);
-                        if(dict.contains(temp))
-                        {
-                            for(Stack<String> s : seeni)
-                            {
-                                for(String teeni : s)
-                                {
-                                    if(teeni.equals(temp))
-                                    {
-                                        sus = true;
-
-                                    }
-                                }
-                            }
-
-                            if(sus == false) {
-
-                                if (temp.equals(w2)) {
-                                    Stack<String> teepi = tempStack;
-                                    //for(String s:teepi)
-                                    //System.out.println(s);
-                                    teepi.push(temp);
-                                    for (Object lol : seeni.peek()) {
-                                        answa += lol + " ";
-                                    }
-                                    return answa;
-                                }
-                                else{
-                                    Stack<String> teepi = tempStack;
-                                    //for(String s:teepi)
-                                    //System.out.println(s);
-                                    teepi.push(temp);
-                                    seeni.offer(teepi);
-                                }
-                            }
-
+            String topWord = stacks.peek();
+            //System.out.println(topWord);
+            String tempWord;
+            List<String> neighbors = new ArrayList<String>();
+            for(int i = 0; i < topWord.length(); i++) {
+                for (int j = 0; j < alpha.length(); j++) {
+                    //System.out.println("Bird");
+                    tempWord = topWord.substring(0, i) + alpha.substring(j, j + 1) + topWord.substring(i + 1);
+                    if (dict.contains(tempWord)) {
+                        neighbors.add(tempWord);
+                    }
+                }
+            }
+            ArrayList<String> idek = new ArrayList<String>();
+            for(String str : neighbors){
+                for(Stack<String> st: q){
+                    for(String s : st){
+                        if(s.equals(str)){
+                            idek.add(str);
                         }
                     }
+                }
+            }
+            for(String ugh : idek){
+                neighbors.remove(ugh);
+            }
+            for(String str:neighbors){
+                if(word2.equals(str)){
+                    stacks.add(word2);
+                    return stacks;
+                }else{
+                    Stack<String> copy = new Stack<String>();
+                    for(String s: stacks){
+                        copy.push(s);
+                    }
+                    copy.push(str);
+                    q.add(copy);
 
                 }
             }
 
+
         }
-        return "chicken";
 
-
+        return null;
     }
 }
+
